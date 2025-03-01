@@ -21,7 +21,6 @@ The data from this project comes from the [Netflix Movies and TV Shows](https://
 
 [^1]: Created by user Anand Shaw
 [^2]: statistic from [Statista](https://www.statista.com/statistics/250934/quarterly-number-of-netflix-streaming-subscribers-worldwide/)
-
 ## Basic data description
 
 
