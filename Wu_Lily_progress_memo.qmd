@@ -1,0 +1,40 @@
+---
+title: "Progress Memo"
+subtitle: |
+  | Final Project 
+  | Data Visualization (STAT 302)
+author: "Lily Wu"
+date: today
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    
+reference-location: margin
+citation-location: margin
+---
+
+## Data source
+
+The data from this project comes from the [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/anandshaw2001/netflix-movies-and-tv-shows) Dataset on Kaggle.[^1] This data contains "all listings of movies and tv shows on Netflix." Netflix is considerably one of the more popular streaming platforms reaching more than 300 million subscribers globally in 2024.[^2]
+
+[^1]: Created by user Anand Shaw
+[^2]: statistic from [Statista](https://www.statista.com/statistics/250934/quarterly-number-of-netflix-streaming-subscribers-worldwide/)
+
+## Basic data description
+
+
+
+## Why this data
+
+Response here.
+
+## Visualization plan
+
+Response here.
+
+### Misc
+
+Response here.
+
