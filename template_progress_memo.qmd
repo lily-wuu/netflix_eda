@@ -1,0 +1,34 @@
+---
+title: "Progress Memo"
+subtitle: |
+  | Final Project 
+  | Data Visualization (STAT 302)
+author: "YOUR NAME"
+date: today
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+---
+
+## Data source
+
+Response here.
+
+## Basic data description
+
+Response here.
+
+## Why this data
+
+Response here.
+
+## Visualization plan
+
+Response here.
+
+### Misc
+
+Response here.
+
