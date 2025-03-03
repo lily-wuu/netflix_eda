@@ -17,23 +17,49 @@ citation-location: margin
 
 ## Data source
 
-The data from this project comes from the [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/anandshaw2001/netflix-movies-and-tv-shows) Dataset on Kaggle.[^1] This data contains "all listings of movies and tv shows on Netflix." Netflix is considerably one of the more popular streaming platforms reaching more than 300 million subscribers globally in 2024.[^2]
+The data from this project comes from the [Netflix TV Shows and Movies](https://github.com/amirtds/kaggle-netflix-tv-shows-and-movies/tree/main) Dataset on Github.[^1] This data contains information regarding various Netflix shows and movies with its corresponding IMDB and TMDB ratings. This allows us to get a better idea of the content on Netflix and trends in their offerings. Netflix is considerably one of the most popular streaming platforms reaching more than 300 million subscribers globally in 2024.[^2]
 
-[^1]: Created by user Anand Shaw
+[^1]: Sourced Dataset from user, Victor Soeiro, on [Kaggle](https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies)
 [^2]: statistic from [Statista](https://www.statista.com/statistics/250934/quarterly-number-of-netflix-streaming-subscribers-worldwide/)
+
 ## Basic data description
 
+The [Netflix TV Shows and Movies](https://github.com/amirtds/kaggle-netflix-tv-shows-and-movies/tree/main) dataset consists of 5806 observations across 15 variables. The dataset contains information on each work's ID, name, type (TV show or movie), description, release year, age rating, runtime, genres, production countries, and seasons (if applicable). It also includes rating information including IMDb and TMDB scores, IMDb votes, and TMDB popularity.
+
+There are eight character variables and seven numeric variables in the dataset. As seen in @tbl-load-data, there are some missing data issues, particularly with the age certification and seasons variables. The missing values for seasons can be explained by whether the title is a film. For the other variables, most have a completion rate above 90%, so the impact of missing data is minimal. While these factors are worth considering, since this is an exploratory analysis, I plan to focus only on complete observations.
+
+```{r}
+#| label: tbl-load-data
+#| tbl-cap: "Netflix Dataset Quality Check"
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+
+netflix_titles <- read_csv("data/titles.csv")
+
+skimr::skim_without_charts(netflix_titles) |>
+  knitr::kable()
+```
 
 
 ## Why this data
 
-Response here.
+I'm really interested in entertainment, especially movies and TV, so I figured my final project should be on something I enjoy. Netflix has so a diverse and full content library, and with all the content available, I was curious about how different things contribute to ratings. My questions are:
+
+- How do IMDb ratings vary among show types (tv or movie)?
+- Does runtime have any impact on the rating of a film?
+- Is there a relationship between votes and ratings on IMDb?
+
+This project is mostly an exploration project, so I will also be looking for any interesting patterns or insights that could tell a broader story about audience preferences on Netflix.
+
 
 ## Visualization plan
 
-Response here.
+I plan to create a dynamic dashboard with interactive graphics that showcase the information in this dataset. I want the user to be able to filter by type of content, runtime, or vote count to see how they would affect the IMDb ratings or even suggest users shows/movies they should watch based on the IMDb or TMDB ratings.
 
 ### Misc
 
-Response here.
+I am considering potentially adding other components to the dashboard, but I wanted to make sure that everything works correctly first. I am planning to use the Shiny (R package) software to develop this dashboard. Also, depending on the insights that I gain from this dataset, I am considering looking for additional Netflix datasets to supplement this.   
+
 

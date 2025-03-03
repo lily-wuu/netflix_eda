@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Lily Wu">
-<meta name="dcterms.date" content="2025-03-01">
+<meta name="dcterms.date" content="2025-03-02">
 
 <title>Progress Memo</title>
 <style>
@@ -3085,7 +3085,7 @@ Data Visualization (STAT 302)</div><p></p>
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 1, 2025</p>
+      <p class="date">March 2, 2025</p>
     </div>
   </div>
   
@@ -3099,22 +3099,354 @@ Data Visualization (STAT 302)</div><p></p>
 
 <section id="data-source" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="data-source">Data source</h2>
-<p>The data from this project comes from the <a href="https://www.kaggle.com/datasets/anandshaw2001/netflix-movies-and-tv-shows">Netflix Movies and TV Shows</a> Dataset on Kaggle.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This data contains “all listings of movies and tv shows on Netflix.” Netflix is considerably one of the more popular streaming platforms reaching more than 300 million subscribers globally in 2024.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup> Created by user Anand Shaw</p></div><div id="fn2"><p><sup>2</sup> statistic from <a href="https://www.statista.com/statistics/250934/quarterly-number-of-netflix-streaming-subscribers-worldwide/">Statista</a></p></div></div></section>
+<p>The data from this project comes from the <a href="https://github.com/amirtds/kaggle-netflix-tv-shows-and-movies/tree/main">Netflix TV Shows and Movies</a> Dataset on Github.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This data contains information regarding various Netflix shows and movies with its corresponding IMDB and TMDB ratings. This allows us to get a better idea of the content on Netflix and trends in their offerings. Netflix is considerably one of the most popular streaming platforms reaching more than 300 million subscribers globally in 2024.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup> Sourced Dataset from user, Victor Soeiro, on <a href="https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies">Kaggle</a></p></div><div id="fn2"><p><sup>2</sup> statistic from <a href="https://www.statista.com/statistics/250934/quarterly-number-of-netflix-streaming-subscribers-worldwide/">Statista</a></p></div></div></section>
 <section id="basic-data-description" class="level2">
 <h2 class="anchored" data-anchor-id="basic-data-description">Basic data description</h2>
-<p>Response here.</p>
+<p>The <a href="https://github.com/amirtds/kaggle-netflix-tv-shows-and-movies/tree/main">Netflix TV Shows and Movies</a> dataset consists of 5806 observations across 15 variables. The dataset contains information on each work’s ID, name, type (TV show or movie), description, release year, age rating, runtime, genres, production countries, and seasons (if applicable). It also includes rating information including IMDb and TMDB scores, IMDb votes, and TMDB popularity.</p>
+<p>There are eight character variables and seven numeric variables in the dataset. As seen in <a href="#tbl-load-data" class="quarto-xref">Table 1</a>, there are some missing data issues, particularly with the age certification and seasons variables. The missing values for seasons can be explained by whether the title is a film. For the other variables, most have a completion rate above 90%, so the impact of missing data is minimal. While these factors are worth considering, since this is an exploratory analysis, I plan to focus only on complete observations.</p>
+<div class="cell">
+<div id="tbl-load-data" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-load-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 1: Netflix Dataset Quality Check
+</figcaption>
+<div aria-describedby="tbl-load-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_type</th>
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">character.min</th>
+<th style="text-align: right;">character.max</th>
+<th style="text-align: right;">character.empty</th>
+<th style="text-align: right;">character.n_unique</th>
+<th style="text-align: right;">character.whitespace</th>
+<th style="text-align: right;">numeric.mean</th>
+<th style="text-align: right;">numeric.sd</th>
+<th style="text-align: right;">numeric.p0</th>
+<th style="text-align: right;">numeric.p25</th>
+<th style="text-align: right;">numeric.p50</th>
+<th style="text-align: right;">numeric.p75</th>
+<th style="text-align: right;">numeric.p100</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">id</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5806</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">title</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.9998278</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5751</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">type</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">description</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0.9968998</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1731</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5785</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">age_certification</td>
+<td style="text-align: right;">2610</td>
+<td style="text-align: right;">0.5504650</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">genres</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1626</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">production_countries</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">449</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">imdb_id</td>
+<td style="text-align: right;">444</td>
+<td style="text-align: right;">0.9235274</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5362</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">release_year</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">2016.013434</td>
+<td style="text-align: right;">7.324883</td>
+<td style="text-align: right;">1.9450e+03</td>
+<td style="text-align: right;">2015.00000</td>
+<td style="text-align: right;">2018.000</td>
+<td style="text-align: right;">2020.00000</td>
+<td style="text-align: right;">2022.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">runtime</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">77.643989</td>
+<td style="text-align: right;">39.474160</td>
+<td style="text-align: right;">0.0000e+00</td>
+<td style="text-align: right;">44.00000</td>
+<td style="text-align: right;">84.000</td>
+<td style="text-align: right;">105.00000</td>
+<td style="text-align: right;">251.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">seasons</td>
+<td style="text-align: right;">3759</td>
+<td style="text-align: right;">0.3525663</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">2.165608</td>
+<td style="text-align: right;">2.636207</td>
+<td style="text-align: right;">1.0000e+00</td>
+<td style="text-align: right;">1.00000</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">2.00000</td>
+<td style="text-align: right;">42.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">imdb_score</td>
+<td style="text-align: right;">523</td>
+<td style="text-align: right;">0.9099208</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">6.533447</td>
+<td style="text-align: right;">1.160932</td>
+<td style="text-align: right;">1.5000e+00</td>
+<td style="text-align: right;">5.80000</td>
+<td style="text-align: right;">6.600</td>
+<td style="text-align: right;">7.40000</td>
+<td style="text-align: right;">9.600</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">imdb_votes</td>
+<td style="text-align: right;">539</td>
+<td style="text-align: right;">0.9071650</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">23407.194988</td>
+<td style="text-align: right;">87134.315849</td>
+<td style="text-align: right;">5.0000e+00</td>
+<td style="text-align: right;">521.00000</td>
+<td style="text-align: right;">2279.000</td>
+<td style="text-align: right;">10144.00000</td>
+<td style="text-align: right;">2268288.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">tmdb_popularity</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">0.9838099</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">22.525660</td>
+<td style="text-align: right;">68.849177</td>
+<td style="text-align: right;">9.4417e-03</td>
+<td style="text-align: right;">3.15525</td>
+<td style="text-align: right;">7.478</td>
+<td style="text-align: right;">17.77575</td>
+<td style="text-align: right;">1823.374</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">tmdb_score</td>
+<td style="text-align: right;">318</td>
+<td style="text-align: right;">0.9452291</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">6.818039</td>
+<td style="text-align: right;">1.171560</td>
+<td style="text-align: right;">5.0000e-01</td>
+<td style="text-align: right;">6.10000</td>
+<td style="text-align: right;">6.900</td>
+<td style="text-align: right;">7.50000</td>
+<td style="text-align: right;">10.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
 </section>
 <section id="why-this-data" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-data">Why this data</h2>
-<p>Response here.</p>
+<p>I’m really interested in entertainment, especially movies and TV, so I figured my final project should be on something I enjoy. Netflix has so a diverse and full content library, and with all the content available, I was curious about how different things contribute to ratings. My questions are:</p>
+<ul>
+<li>How do IMDb ratings vary among show types (tv or movie)?</li>
+<li>Does runtime have any impact on the rating of a film?</li>
+<li>Is there a relationship between votes and ratings on IMDb?</li>
+</ul>
+<p>This project is mostly an exploration project, so I will also be looking for any interesting patterns or insights that could tell a broader story about audience preferences on Netflix.</p>
 </section>
 <section id="visualization-plan" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-plan">Visualization plan</h2>
-<p>Response here.</p>
+<p>I plan to create a dynamic dashboard with interactive graphics that showcase the information in this dataset. I want the user to be able to filter by type of content, runtime, or vote count to see how they would affect the IMDb ratings or even suggest users shows/movies they should watch based on the IMDb or TMDB ratings.</p>
 <section id="misc" class="level3">
 <h3 class="anchored" data-anchor-id="misc">Misc</h3>
-<p>Response here.</p>
+<p>I am considering potentially adding other components to the dashboard, but I wanted to make sure that everything works correctly first. I am planning to use the Shiny (R package) software to develop this dashboard. Also, depending on the insights that I gain from this dataset, I am considering looking for additional Netflix datasets to supplement this.</p>
 </section>
 </section>
 
