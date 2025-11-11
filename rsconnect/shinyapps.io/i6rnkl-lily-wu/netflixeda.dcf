@@ -1,0 +1,13 @@
+name: netflixeda
+title: netflixeda
+username: i6rnkl-lily-wu
+account: i6rnkl-lily-wu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14480695
+bundleId:
+url: https://i6rnkl-lily-wu.shinyapps.io/netflixeda/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: memo/Wu_Lily_progress_memo.html|memo/Wu_Lily_progress_memo.qmd
