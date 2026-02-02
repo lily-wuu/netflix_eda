@@ -3,4 +3,9 @@
 .RData
 .Ruserdata
 
+rsconnect/
+.DS_Store
+**/.DS_Store
+
+
 echo ".DS_Store" >> .gitignore
