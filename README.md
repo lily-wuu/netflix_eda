@@ -71,7 +71,6 @@ Generative AI was used as a coding aid for debugging and researching specific Sh
 
 ## ⚖️ License
 
-The dataset used in this project is licensed under **CC0: Public Domain**.  
-All credit for the data goes to the original creator, Victor Soeiro.
+The Dataset is under [CC0: Public Domain Dedication.](https://creativecommons.org/publicdomain/zero/1.0/) and all the credits goes to Victor Soeiro creator of this [dataset in Kaggle](https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies) 
 
 ---
