@@ -58,9 +58,9 @@ Contains data sources and project documentation.
 This tool was created to practice data visualization skills from STAT 302 and help users discover highly-rated Netflix content more efficiently.
 
 ### Data Source  
-The dataset comes from the **Netflix TV Shows and Movies** repository on GitHub, reflecting the U.S. library as of May 2022:
+The dataset comes from the **Netflix TV Shows and Movies** dataset on Kaggle, reflecting the U.S. library as of May 2022:
 
-👉 https://github.com/victorsoeiro/netflix-tv-shows-and-movies
+👉 https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies
 
 Created by Victor Soeiro.
 
